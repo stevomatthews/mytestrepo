@@ -5,9 +5,9 @@ Repo to be used for learning git, GitHub, and GitHub Desktop (Mac)
 `srt_bind()` or any other function doing this, including automatic binding when trying to
 connect, as well as accepted sockets).
 
-  **NOTE**: The `pre-bind` characteristic applies exclusively to options that:
-  - Change the behavior and functionality of the `srt_bind` call
-  - Concern or set an option on the internally used UDP socket
-  - Concern any kind of resource used by the multiplexer
+	**NOTE**: The `pre-bind` characteristic applies exclusively to options that:
+	  - change the behavior and functionality of the `srt_bind` call
+	  - concern or set an option on the internally used UDP socket
+	  - concern any kind of resource used by the multiplexer
 
 
