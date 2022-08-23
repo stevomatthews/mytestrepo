@@ -23,6 +23,7 @@ derived by every socket returned by `srt_accept()`.
 
 
 | Library       | Version   | Description / License Information                   |
+|:------------- | :-------- | :-------------------------------------------------- |
 | Aften         | 0.0.8     | Audio Encoder Library: http://aften.sourceforge.net/ <br>License: [GNU Library General Public License (LGPL) v2.1](https://www.gnu.org/licenses/lgpl-2.1.html) |
 | AudioFile     | 0.3.6     | AudioFile Library: https://github.com/mpruett/audiofile/ <br>License: [GNU Library General Public License (LGPL) v2.1](https://www.gnu.org/licenses/lgpl-2.1.html) |
 | Azure-iot-sdk | 20190318  | Azure IoT SDK:  https://github.com/Azure/azure-iot-sdk-c <br>License: MIT-Style https://github.com/Azure/azure-iot-sdk-c/blob/master/LICENSE |
