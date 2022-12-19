@@ -41,7 +41,8 @@ fragmentation is disabled in QUIC, QUIC packets must fit completely inside a UDP
 To tunnel SRT over QUIC datagrams, a single SRT packet should be encapsulated into a single 
 DATAGRAM frame, in particular within the _Datagram Data_ field of a QUIC datagram.
 
-(TODO: picture)
+TODO: add picture
+
 Fig. xx: **Mapping SRT to QUIC datagrams**
 
 
@@ -147,7 +148,7 @@ TODO: Picture with test setup for SRT over QUIC, see slide 11 from
 
 Fig. xx: **SRT over QUIC test setup**
 
-TODO: A note regarding CC and the issue in quicly - maybe?)
+TODO: A note regarding CC and the issue in quicly - maybe?
 
 ## 4. Performance Evaluation
 
@@ -177,10 +178,10 @@ and the overhead was set to the default value of 25%. This could be achieved by 
 of `maxbw=0&inputbw=0` options passed to the `srt-xtransmit` in a URI. 
 
 For additional details, see the following:
-  - [Configuring Maximum Bandwidth (`INPUTBW_ESTIMATED` mode)](https://datatracker.ietf.org/doc/html/draft-sharabayko-srt-01#section-5.1.1)
-  - [`SRTO_MAXBW` (socket option)](https://github.com/Haivision/srt/blob/v1.5.0-rc.0/docs/API/API-socket-options.md#srto_maxbw)
-  - [`SRTO_INPUTBW` (socket option)](https://github.com/Haivision/srt/blob/v1.5.0-rc.0/docs/API/API-socket-options.md#SRTO_INPUTBW)
-  - [`SRTO_OHEADBW` (socket option)](https://github.com/Haivision/srt/blob/v1.5.0-rc.0/docs/API/API-socket-options.md#SRTO_OHEADBW)
+  - [Configuring Maximum Bandwidth](https://datatracker.ietf.org/doc/html/draft-sharabayko-srt-01#section-5.1.1) `INPUTBW_ESTIMATED` mode
+  - [`SRTO_MAXBW`](https://github.com/Haivision/srt/blob/v1.5.0-rc.0/docs/API/API-socket-options.md#srto_maxbw) socket option
+  - [`SRTO_INPUTBW`](https://github.com/Haivision/srt/blob/v1.5.0-rc.0/docs/API/API-socket-options.md#SRTO_INPUTBW) socket option
+  - [`SRTO_OHEADBW`](https://github.com/Haivision/srt/blob/v1.5.0-rc.0/docs/API/API-socket-options.md#SRTO_OHEADBW) socket option
   
 Default values of [sender and receiver buffers](https://github.com/Haivision/srt/blob/v1.5.0-rc.0/docs/API/configuration-guidelines.md) 
 were used on both client and server sides. The version of the **quicly** library was fixed at the 
@@ -190,32 +191,73 @@ which introduced an important fix for  QUIC DATAGRAM frames.
 TODO: Thanks to Kazuho Oku
 TODO: CC wasn't disabled
 
-Experiments listed in Table xx below were performed. The duration of the first three experiments was set to 15 minutes while the SRT latency was configured to be 400 ms, 600 ms, and 800 ms, respectively. The 4th experiment was simply a repetition of the 3rd one with data being collected for 1 hour. Note that the SRT latency setting (which defines ...) was applied for the tunnelling SRT over QUIC transmission only.
-Table xx: ...
-| Experiment   | Description                               |
-| ------------ | ----------------------------------------- |
-| Experiment 1 | SRT Latency: 400 ms, Duration: 15 minutes |
-| Experiment 2 | SRT Latency: 600 ms, Duration: 15 minutes |
-| Experiment 3 | SRT Latency: 800 ms, Duration: 15 minutes |
-| Experiment 4 | SRT Latency: 800 ms, Duration: 1 hour     |
+Experiments listed in Table xx below were performed. The duration of the first three 
+experiments was set to 15 minutes while the SRT latency was configured to be 400 ms, 
+600 ms, and 800 ms, respectively. The 4th experiment was simply a repetition of the 
+3rd one with data being collected for 1 hour. Note that the SRT latency setting 
+(which defines ...) was applied for the tunnelling SRT over QUIC transmission only.
+
+| Experiment   | SRT Latency |  Duration  |
+| ------------ | ------------------------ |
+| Experiment 1 |    400 ms   | 15 minutes |
+| Experiment 2 |    600 ms   | 15 minutes |
+| Experiment 3 |    800 ms   | 15 minutes |
+| Experiment 4 |      0 ms   | 60 minutes |
+
+Table xx: .**Experimental results**
+
+
+
 ### 4.2. Performance Metrics
-The detailed description of the performance metrics and their calculation can be found in [Section 4 "Performance Metrics"](https://datatracker.ietf.org/doc/html/draft-sharabayko-moq-metrics-00#section-4) of the [mentioned above Internet Draft](https://datatracker.ietf.org/doc/html/draft-sharabayko-moq-metrics-00). During results discussion, we would be in particular interested in the following of them:
-- Time-Stamped Delay Factor (TS-DF), later also referred as TS-DF jitter, or simply jitter. Unlike the algorithm defined in [RFC3550], TS-DF one does not use a smoothing factor and therefore gives a very accurate instantaneous result. We prefer using TS-DF metric over RFC3550 jitter in the analysis, however, the calculation of RFC3550 jitter has been done and the graphs are available.
-- The number of received, missing, and reordered payloads.
-Here is an example snapshot of the `srt-xtransmit` metrics file produced at the receiver side during one of the experiments.
+
+The detailed description of the performance metrics and their calculation can be found in 
+[Section 4 "Performance Metrics"](https://datatracker.ietf.org/doc/html/draft-sharabayko-moq-metrics-00#section-4) 
+of the [Internet Draft](https://datatracker.ietf.org/doc/html/draft-sharabayko-moq-metrics-00) mentioned above. 
+
+In reviewing the results, the following metrics are of particular interest:
+
+- **Time-Stamped Delay Factor (TS-DF)**, also referred as *TS-DF jitter*, or simply *jitter*. 
+Unlike the algorithm defined in [RFC3550], TS-DF does not use a smoothing factor and therefore 
+gives a very accurate instantaneous result. We preferred the use of the TS-DF metric over RFC3550 jitter 
+in our analysis. However, the calculation of RFC3550 jitter has been made and the graphs are available.
+
+- **The number of received, missing, and reordered payloads.**
+Here is an example snapshot of the `srt-xtransmit` metrics file produced at the receiver 
+side during one of the experiments:
+
 ![metrics](img/metrics.png)
-Fig. xx: `srt-xtransmit` `.csv` output with metrics.
+Fig. xx: **`srt-xtransmit` `.csv` output with metrics**
+
+
 To calculate the percentage of unrecovered and reordered packets, the following formulas were used:
+
 - Unrecovered Packets (%) = pktLost / (pktReceived + pktLost)
-  This metric shows the percentage of lost packets when streaming over QUIC datagrams and percentage of unrecovered (or dropped) by the SRT protocol packets when tunnelling SRT over QUIC.
+  This metric shows the percentage of lost packets when streaming over QUIC datagrams 
+  and the percentage   of packets that were unrecovered (or dropped) by the SRT protocol 
+  packets when tunnelling SRT over QUIC.
+
 - Reordered Packets (%) = pktReordered / (pktReceived + pktLost)
-As you might guess, the values of received (`pktReceived`), lost (`pktLost`), and reordered (`pktReordered`) packets were taken from one of the `srt-xtransmit` output files. The last row was used as the referenced statistics are accumulated by `srt-xtransmit` during experiment.
-As some of the metrics are sensitive to clock drift, it is recommended to synchronize the clocks on both sender and receiver machines before an experiment.
+  As would be expected, the values of received (`pktReceived`), lost (`pktLost`), and 
+  reordered (`pktReordered`) packets were taken from one of the `srt-xtransmit` output 
+  files. The last row was used as the referenced statistics accumulated by `srt-xtransmit` 
+  during experiment. As some of the metrics are sensitive to clock drift, it is recommended 
+  to synchronize the clocks on both sender and receiver machines before an experiment.
+  
 TO BE CONTINUED ...
 ---- haven't touched yet -----
+
+
 ## References
+
 [[RFC9000]](https://www.rfc-editor.org/info/rfc9000) Iyengar, J., Ed. and M. Thomson, Ed., "QUIC: A UDP-Based Multiplexed and Secure Transport", RFC 9000, DOI 10.17487/RFC9000, May 2021,              <https://www.rfc-editor.org/info/rfc9000>.
+
 [[RFC7323]](https://www.rfc-editor.org/info/rfc7323) Borman, D., Braden, B., Jacobson, V., and R. Scheffenegger, Ed., "TCP Extensions for High Performance", RFC 7323, DOI 10.17487/RFC7323, September 2014, <https://www.rfc-editor.org/info/rfc7323>.
+
 [[QUIC-DATAGRAM]](https://datatracker.ietf.org/doc/draft-ietf-quic-datagram/) Pauly, T., Kinnear, E., and D. Schinazi, "An Unreliable Datagram Extension to QUIC", n.d., https://datatracker.ietf.org/doc/draft-ietf-quic-datagram/.
+
 [[SRTRFC]](https://datatracker.ietf.org/doc/draft-sharabayko-srt/) Sharabayko, M.P., Sharabayko, M.A., Dube, J., Kim, J., and J. Kim, "The SRT Protocol", December 2019, <https://datatracker.ietf.org/doc/draft-sharabayko-srt/>.
 TODO: Don't forget about ack-s section.
+
+
+
+
