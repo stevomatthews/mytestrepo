@@ -165,14 +165,14 @@ Table 2: Percentage of unrecovered and reordered packets per experiment (SRT ove
 
 Table 3: Time-Stamped Delay Factor (TS-DF) statistics when streaming over QUIC datagrams.
 
-| Statistic / Experiment | Experiment 1 | Experiment 2 | Experiment 3 | Experiment 4 |
-| ---------------------- | ------------ | ------------ | ------------ | ------------ |
-| Min, ms                | 7.35         | 6.05         | 5.94         | 4.70         |
-| Max, ms                | 268.32       | 274.36       | 292.19       | 307.32       |
-| Mean, ms               | 33.45        | 32.79        | 33.09        | 31.84        |
-| Standard Deviation, ms | 37.51        | 36.80        | 36.62        | 36.19        |
-| Median, ms             | 22.67        | 22.53        | 22.47        | 21.08        |
-
+| </br>Statistic         | Experiment</br>1 | Experiment</br>2 | Experiment</br>3 | Experiment</br>4 |
+|:---------------------- |:----------------:|:----------------:|:----------------:|:----------------:|
+| Min, ms                | 7.35             | 6.05             | 5.94             | 4.70             |
+| Max, ms                | 268.32           | 274.36           | 292.19           | 307.32           |
+| Mean, ms               | 33.45            | 32.79            | 33.09            | 31.84            |
+| Standard Deviation, ms | 37.51            | 36.80            | 36.62            | 36.19            |
+| Median, ms             | 22.67            | 22.53            | 22.47            | 21.08            |
+    
 Table 4: Time-Stamped Delay Factor (TS-DF) statistics when tunnelling SRT over QUIC datagrams.
 
 | </br>Statistic         | Experiment</br>1 | Experiment</br>2 | Experiment</br>3 | Experiment</br>4 |
