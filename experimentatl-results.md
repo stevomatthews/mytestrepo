@@ -165,21 +165,21 @@ Table 2: Percentage of unrecovered and reordered packets per experiment (SRT ove
 
 Table 3: Time-Stamped Delay Factor (TS-DF) statistics when streaming over QUIC datagrams.
 
-| </br>Statistic         | Experiment</br>1 | Experiment</br>2 | Experiment</br>3 | Experiment</br>4 |
-|:---------------------- |:----------------:|:----------------:|:----------------:|:----------------:|
-| Min, ms                | 7.35             | 6.05             | 5.94             | 4.70             |
-| Max, ms                | 268.32           | 274.36           | 292.19           | 307.32           |
-| Mean, ms               | 33.45            | 32.79            | 33.09            | 31.84            |
-| Standard Deviation, ms | 37.51            | 36.80            | 36.62            | 36.19            |
-| Median, ms             | 22.67            | 22.53            | 22.47            | 21.08            |
+| </br>Statistic          | Experiment</br>1 | Experiment</br>2 | Experiment</br>3 | Experiment</br>4 |
+|:----------------------- |:----------------:|:----------------:|:----------------:|:----------------:|
+| Minimum (ms)            | 7.35             | 6.05             | 5.94             | 4.70             |
+| Maximum (ms)            | 268.32           | 274.36           | 292.19           | 307.32           |
+| Mean (ms)               | 33.45            | 32.79            | 33.09            | 31.84            |
+| Standard Deviation (ms) | 37.51            | 36.80            | 36.62            | 36.19            |
+| Median (ms)             | 22.67            | 22.53            | 22.47            | 21.08            |
     
 Table 4: Time-Stamped Delay Factor (TS-DF) statistics when tunnelling SRT over QUIC datagrams.
 
-| </br>Statistic         | Experiment</br>1 | Experiment</br>2 | Experiment</br>3 | Experiment</br>4 |
-|:---------------------- |:----------------:|:----------------:|:----------------:|:----------------:|
-| Min, ms                | 0.03             | 0.03             | 0.03             | 0.03             |
-| Max, ms                | 39.17            | 37.06            | 7.41             | 32.15            |
-| Mean, ms               | 0.39             | 0.28             | 0.28             | 0.32             |
-| Standard Deviation, ms | 1.63             | 1.34             | 0.65             | 1.09             |
-| Median, ms             | 0.15             | 0.11             | 0.13             | 0.14             |
+| </br>Statistic          | Experiment</br>1 | Experiment</br>2 | Experiment</br>3 | Experiment</br>4 |
+|:----------------------- |:----------------:|:----------------:|:----------------:|:----------------:|
+| Minimum (ms)            | 0.03             | 0.03             | 0.03             | 0.03             |
+| Maximum (ms)            | 39.17            | 37.06            | 7.41             | 32.15            |
+| Mean (ms)               | 0.39             | 0.28             | 0.28             | 0.32             |
+| Standard Deviation (ms) | 1.63             | 1.34             | 0.65             | 1.09             |
+| Median (ms)             | 0.15             | 0.11             | 0.13             | 0.14             |
     
