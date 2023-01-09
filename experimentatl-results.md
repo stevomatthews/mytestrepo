@@ -175,7 +175,7 @@ Table 3: Time-Stamped Delay Factor (TS-DF) statistics when streaming over QUIC d
 
 Table 4: Time-Stamped Delay Factor (TS-DF) statistics when tunnelling SRT over QUIC datagrams.
 
-| Statistic              | Experiment</br>1 | Experiment</br>2 | Experiment</br>3 | Experiment</br>4 |
+|:</br>Statistic              |:Experiment</br>1:|:Experiment</br>2:|:Experiment</br>3:|:Experiment</br>4:|
 | ---------------------- | ------------:| ------------:| ------------:| ------------:|
 | Min, ms                | 0.03         | 0.03         | 0.03         | 0.03         |
 | Max, ms                | 39.17        | 37.06        | 7.41         | 32.15        |
